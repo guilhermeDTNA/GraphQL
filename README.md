@@ -5,7 +5,7 @@ Projeto para estudo do GraphQL
 Para executar:
 
 ```console
-    $ npm start
+$ npm start
 ```
 
 Acessar localhost:4000 e realizar as consultas. Ex.:
