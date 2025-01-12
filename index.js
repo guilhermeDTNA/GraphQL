@@ -7,7 +7,8 @@ const listaUsuarios = [
         nome: "Guilherme",
         ativo: true,
         id: 1,
-        tecnologias: ["React JS", "NextJS", "GraphQL"]
+        tecnologias: ["React JS", "NextJS", "GraphQL"],
+        telefone_fixo: '(38) 3531-6704'
     },
 
     {
@@ -16,7 +17,17 @@ const listaUsuarios = [
         nome: "Teste",
         ativo: false,
         id: 2,
-        tecnologias: ["VTEX", "Shopify"]
+        tecnologias: ["VTEX", "Shopify"],
+        telefone_fixo: '(38) 3531-2716'
+    },
+
+    {
+        idade: 34,
+        salario: 10000,
+        nome: "Ayrton",
+        ativo: true,
+        id: 3,
+        tecnologias: ["VTEX", "React JS"]
     }
 ]
 
@@ -39,6 +50,7 @@ const typeDefs = gql`
         ativo: Boolean
         id: ID
         tecnologias: [String!]!
+        telefone: String
     }
 
     type Produto{
@@ -54,6 +66,12 @@ const typeDefs = gql`
 `;
 
 const resolvers = {
+    Usuario: {
+        telefone(obj){
+            return obj.telefone_fixo;
+        }
+    },
+
     Query: {
         usuarios(){
             return listaUsuarios;
@@ -61,7 +79,7 @@ const resolvers = {
         produtos(){
             return listaProdutos;
         },
-        usuario(obj, args){
+        usuario(_, args){
             const foundById = listaUsuarios.find(usuario => usuario.id === args.id);
             return foundById || listaUsuarios.find(usuario => usuario.nome === args.nome);
         }
