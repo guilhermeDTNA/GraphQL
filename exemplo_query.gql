@@ -1,10 +1,10 @@
 query {
   usuarios {
+    ...userPersonalData
     ativo
-    idade
-    nome
     salario
     tecnologias
+    telefone
   }
 
   produtos{
@@ -13,6 +13,20 @@ query {
   }
 
   usuario(id: 3, nome: "Teste"){
-    nome
+    ...userPersonalData
   }
+
+  primeiro: usuario(id: 1){
+    ...userPersonalData
+  }
+
+  segundo: usuario(id: 2){
+    ...userPersonalData
+  }
+}
+
+fragment userPersonalData on Usuario{
+  nome
+  idade
+  telefone
 }
