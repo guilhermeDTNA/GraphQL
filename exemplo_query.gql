@@ -1,0 +1,18 @@
+query {
+  usuarios {
+    ativo
+    idade
+    nome
+    salario
+    tecnologias
+  }
+
+  produtos{
+    nome
+    preco
+  }
+
+  usuario(id: 3, nome: "Teste"){
+    nome
+  }
+}
